@@ -14,6 +14,7 @@ app.controller('ChatController', function($scope) {
             $('#loginUser').val('');
             $('#login-form').hide();
             $('#chat-container').show();
+            $messageInput.select();
         }
         return false;
     });
