@@ -1,0 +1,9 @@
+.card-block { display: block; overflow: auto; width: auto; height: 450px; }
+.messages-bg { background-color: #f7f7f9; }
+ul#messages { list-style: none; padding-left: 0 !important; }
+ul#messages > li { margin-bottom: 6px; }
+.li-mime { text-align: right; }
+.li-guest { text-align: left; }
+.text-mime { display: inline-block; padding: 2px 6px; border-radius: 4px; background-color: #E0FFFF; }
+.text-guest { display: inline-block; padding: 2px 6px; border-radius: 4px; background-color: white; }
+#onlineUserName.badge, #totalConnectedUsers.badge { padding: 1em 1em; }
