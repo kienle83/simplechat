@@ -8,7 +8,7 @@ var HashMap     = require('hashmap');
 
 var app  = express();
 var port = process.env.PORT || 10080;
-var host = 'localhost';
+//var host = 'localhost';
 
 app.set('port', port);
 
@@ -16,7 +16,8 @@ app.set('port', port);
 var server = http.createServer(app);
 
 // Listen on provided port
-server.listen(port, host);
+//server.listen(port, host);
+server.listen(port);
 
 app.io = socket(server)
 app.users = new HashMap();
