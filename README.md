@@ -2,10 +2,11 @@ SIMPLE CHAT
 
 INSTRUCTIONS:
 1. Clone the repository then go to the folder in CLI
-2. npm start
-3. open link "http://localhost:10080" on first tab
-4. open the second tab on private mode with same link "http://localhost:10080"
-
+2. npm install
+3. npm start
+4. open link "http://localhost:10080" on first tab
+5. open the second tab on private mode with same link "http://localhost:10080"
+6. enjoy to chat
 
 HOW TO INSTALL:
 npm init
