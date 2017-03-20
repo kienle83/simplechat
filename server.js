@@ -58,6 +58,10 @@ app.io.on('connection', (socket) => {
         socket.broadcast.emit('chat message', msg, app.users.get(socket));
     });
 
+    socket.on('typing', (isTyping, name) => {
+        socket.broadcast.emit('typing', isTyping, name);
+    });
+
     socket.on('new user', (user) => {
         app.users.set(socket, user);
         app.io.emit('connection on off', (app.users.count()));

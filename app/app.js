@@ -3,14 +3,15 @@ var app = angular.module('app', []);
 
 app.controller('ChatController', function($scope) {
     var socket = io();
-
     var $messageInput = $('#message');
+    var loginUser = "";
 
     $('#login-form').submit(function() {
         if ($('#loginUser').val() && ($('#loginUser').val() != "")) {
             socket.emit('new user', $('#loginUser').val());
 
-            $('#onlineUserName').text($('#loginUser').val());
+            loginUser = $('#loginUser').val();
+            $('#onlineUserName').text(loginUser);
             $('#loginUser').val('');
             $('#login-form').hide();
             $('#chat-container').show();
@@ -26,6 +27,7 @@ app.controller('ChatController', function($scope) {
             appendMessage(true, $messageInput.val());
             $messageInput.val('');
             $messageInput.select();
+            socket.emit("typing", false);
         }
         return false;
     });
@@ -36,6 +38,23 @@ app.controller('ChatController', function($scope) {
 
     socket.on('chat message', function(message, name) {
         appendMessage(false, message, name);
+    });
+
+    socket.on('typing', function(isTyping, name) {
+        if (isTyping) {
+            $('#loginUserName').text(name);
+            $('#isTyping').show();
+        } else {
+            $('#isTyping').hide();
+        }
+    });
+
+    $scope.$watch('message', function(newValue, oldValue) {
+        if (newValue != oldValue && newValue != '') {
+            socket.emit("typing", true, loginUser);
+        } else {
+            socket.emit("typing", false, loginUser);
+        }
     });
 
     function appendMessage(isMyMessage, message, name) {
