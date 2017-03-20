@@ -74,56 +74,11 @@
 </div>
 
 <script src="socket/dist/socket.io.min.js"></script>
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>-->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
-<!--<script type="text/javascript" src="lib/moment/de.js"></script>-->
 
 <script type="text/javascript" src="app/app.js"></script>
-
-<!--<script>-->
-    <!--var socket = io();-->
-    <!--var myName = "";-->
-
-    <!--$('#login-form').submit(function() {-->
-        <!--if ($('#loginUser').val() && ($('#loginUser').val() != "")) {-->
-            <!--socket.emit('new user', $('#loginUser').val());-->
-            <!--myName = $('#loginUser').val();-->
-            <!--$('#onlineUserName').text(myName);-->
-            <!--$('#loginUser').val('');-->
-            <!--$('#login-form').hide();-->
-            <!--$('#chat-container').show();-->
-        <!--}-->
-        <!--return false;-->
-    <!--});-->
-
-
-    <!--$('#chat-form').submit(function() {-->
-        <!--if ($('#message').val() && $('#message').val() != "") {-->
-            <!--socket.emit('chat message', $('#message').val());-->
-            <!--appendMessage(true, $('#message').val());-->
-            <!--$('#message').val('');-->
-        <!--}-->
-        <!--return false;-->
-    <!--});-->
-
-    <!--socket.on('connection on off', function(number) {-->
-        <!--$('#totalConnectedUsers').text(number);-->
-    <!--});-->
-
-    <!--socket.on('chat message', function(message, name) {-->
-        <!--appendMessage(false, message, name);-->
-    <!--});-->
-
-    <!--function appendMessage(isMyMessage, message, name) {-->
-        <!--var liClass   = isMyMessage ? "li-mime" : "li-guest";-->
-        <!--var textClass = isMyMessage ? "text-mime" : "text-guest";-->
-        <!--var messageHtml = '<li class="'+liClass+'"><div class="'+textClass+'">' + (isMyMessage ? '' : '<div><strong>'+name+'</strong></div>') + message + '</li>';-->
-        <!--$('#messages').append(messageHtml);-->
-    <!--}-->
-
-<!--</script>-->
 
 </body>
 </html>
