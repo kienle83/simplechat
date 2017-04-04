@@ -5,9 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="simple chat">
-    <meta name="author" content="affinitas">
-    <link rel="icon" href="http://www.affinitas.de/favicon.ico">
+    <meta name="description" content="simple chat">    
     <title>Simple Chat</title>
 
     <!-- Bootstrap core CSS -->
@@ -26,11 +24,11 @@
     <div class="text-center text-primary"><h2>Simple Chat</h2></div> <br/>
 
     <div class="row">
-        <form id="login-form" class="form-control text-center">
+        <form id="login-form" ng-submit="submitLogin()" class="form-control text-center">
             <h4>Please enter your name to chat!</h4> <br/>
             <div class="form-group input-group col-sm-12 col-md-6 offset-md-3">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input class="form-control" type="text" id="loginUser" placeholder="Enter your name"/>
+                <input class="form-control" type="text" id="loginUser" ng-model="loginUser" placeholder="Enter your name"/>
             </div>
             <div class="form-group col-sm-12 col-md-6 offset-md-3">
                 <button type="submit button" class="btn btn-primary form-control">Login</button>
@@ -54,14 +52,14 @@
             <ul id="messages"></ul>
         </div>
         <div class="card-footer">
-            <form id="chat-form">
+            <form id="chat-form" ng-submit="submitChat()">
                 <div class="row">
                     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10">
                         <div class="input-group">
                         <span class="input-group-addon" id="basic-addon-message">
                             <i class="fa fa-pencil"></i>
                         </span>
-                        <input type="text" id="message" ng-model='message' ng-keypress="sendmessage($event)" autocomplete="off" class="form-control" placeholder="Write your message here..." aria-describedby="basic-addon-message">
+                        <input type="text" id="message" ng-model="message" ng-keypress="sendmessage($event)" autocomplete="off" class="form-control" placeholder="Write your message here..." aria-describedby="basic-addon-message">
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
@@ -76,7 +74,6 @@
 <script src="socket/dist/socket.io.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
 
 <script type="text/javascript" src="app/app.js"></script>
 
