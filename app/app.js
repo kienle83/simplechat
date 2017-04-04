@@ -4,34 +4,7 @@ var app = angular.module('app', []);
 app.controller('ChatController', function($scope) {
     var socket = io();
     var $messageInput = $('#message');
-    var loginUser = "";
-
-    $('#login-form').submit(function() {
-        if ($('#loginUser').val() && ($('#loginUser').val() != "")) {
-            socket.emit('new user', $('#loginUser').val());
-
-            loginUser = $('#loginUser').val();
-            $('#onlineUserName').text(loginUser);
-            $('#loginUser').val('');
-            $('#login-form').hide();
-            $('#chat-container').show();
-            $messageInput.select();
-        }
-        return false;
-    });
-
-
-    $('#chat-form').submit(function() {
-        if ($messageInput.val() && $messageInput.val() != "") {
-            socket.emit('chat message', $messageInput.val());
-            appendMessage(true, $messageInput.val());
-            $messageInput.val('');
-            $messageInput.select();
-            socket.emit("typing", false);
-        }
-        return false;
-    });
-
+       
     socket.on('connection on off', function(number) {
         $('#totalConnectedUsers').text(number);
     });
@@ -56,6 +29,41 @@ app.controller('ChatController', function($scope) {
             socket.emit("typing", false, loginUser);
         }
     });
+    
+    $scope.submitLogin = function() {
+        if ($scope.loginUser != "") {
+            socket.emit('new user', $scope.loginUser);
+            $('#onlineUserName').text($scope.loginUser);
+            
+            $scope.loginUser = '';            
+            $('#login-form').hide();
+            $('#chat-container').show();
+            $messageInput.select();
+        }        
+    };
+    
+    $scope.submitChat = function() {
+        if ($scope.message != "") {
+            socket.emit('chat message', $scope.message);
+            appendMessage(true, $scope.message);
+            
+            $scope.message = '';
+            $messageInput.select();
+            socket.emit("typing", false);
+        }        
+    };
+
+    $('#chat-form').submit(function() {
+        if ($messageInput.val() && $messageInput.val() != "") {
+            socket.emit('chat message', $messageInput.val());
+            appendMessage(true, $messageInput.val());
+            $messageInput.val('');
+            $messageInput.select();
+            socket.emit("typing", false);
+        }
+        return false;
+    });
+
 
     function appendMessage(isMyMessage, message, name) {
         var liClass   = isMyMessage ? "li-mime" : "li-guest";
